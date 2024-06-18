@@ -1,29 +1,32 @@
-import { useAppContext } from "../Context/Context";
-import { vetIsPresent } from "../utils";
+import { useAppContext } from "../Hooks/useAppContext";
+import { dentistIsPresent } from "./utils/utils";
 import { Link } from "react-router-dom";
 
-const Card = ({ vet }) => {
+const Card = ({ dentist }) => {
   const { appState, dispatch } = useAppContext();
 
   function addDeleteFav(e) {
     e.preventDefault();
-    dispatch({ type: "ADD_DELETE_FAV", data: vet });
+    dispatch({ type: "ADD_DELETE_FAV", data: dentist });
   }
 
   return (
-    <Link to={`/detail/${vet.id}`} className="card">
-      {/* En cada card deberan mostrar en name - username y el id */}
-
-      {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-      {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-
-      <h3>{vet.name}</h3>
-      <p>{vet.username}</p>
-      <p>{vet.id}</p>
-
-      <button onClick={addDeleteFav} className="favButton">
-        {vetIsPresent({ vet, arrayOfVets: appState.favs })
+    <Link
+      to={`/detail/${dentist.id}`}
+      className="w-60 flex gap-4 flex-col bg-white   border-[1px]"
+    >
+      <div className="flex flex-col  gap-2">
+        <img className="w-60" src="./images/doctor.jpg" alt="" />
+        <div className="flex px-2 flex-col gap-0">
+          <h3>{dentist.name}</h3>
+          <p className="text-gray-400 text-sm">{dentist.username}</p>
+        </div>
+      </div>
+      <button
+        onClick={addDeleteFav}
+        className="w-full hover:text-white hover:bg-[#666666] py-2 bg-gray-200"
+      >
+        {dentistIsPresent({ dentist, arrayOfDentists: appState.favs })
           ? "Remove fav"
           : "Add fav"}
       </button>

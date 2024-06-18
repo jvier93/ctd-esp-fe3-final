@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useAppContext } from "../Hooks/useAppContext";
 import FormInput from "./FormInput";
 
 const Form = () => {
+  const { appState } = useAppContext();
+
   const formInputs = [
     {
       type: "text",
@@ -13,7 +16,7 @@ const Form = () => {
       type: "email",
       name: "email",
       placeholder: "Email",
-      pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+      pattern: "^[a-zA-Z0-9_.±]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$",
     },
   ];
 
@@ -48,21 +51,44 @@ const Form = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        {formInputs.map((input, index) => (
-          <FormInput
-            key={index}
-            input={input}
-            value={formState[input.name]}
-            handleInputChange={handleInputChange}
-            handleInputBlur={handleOnBlur}
-          ></FormInput>
-        ))}
+      <form className="flex flex-col w-96 gap-4" onSubmit={handleSubmit}>
+        <div className="flex flex-col gap-2">
+          {formInputs.map((input, index) => (
+            <FormInput
+              key={index}
+              input={input}
+              value={formState[input.name]}
+              handleInputChange={handleInputChange}
+              handleInputBlur={handleOnBlur}
+            ></FormInput>
+          ))}
+        </div>
 
-        {error && <p>Por favor verifique su información nuevamente</p>}
-        {successMessage && !error && <p>{successMessage}</p>}
+        {error && (
+          <p
+            className={`text-left  ${
+              appState.theme === "dark" && "text-white"
+            }`}
+          >
+            Please verify your information again.
+          </p>
+        )}
+        {successMessage && !error && (
+          <p
+            className={`text-left  ${
+              appState.theme === "dark" && "text-white"
+            }`}
+          >
+            {successMessage}
+          </p>
+        )}
 
-        <button type="submit">Submit</button>
+        <button
+          className="w-full  border-[1px] hover:text-white hover:bg-[#666666] py-2 bg-gray-200"
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

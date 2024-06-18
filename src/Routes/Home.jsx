@@ -1,19 +1,25 @@
-import { useAppContext } from "../Context/Context";
+import { useAppContext } from "../Hooks/useAppContext";
 import Card from "../Components/Card";
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
   const { appState } = useAppContext();
-  const vets = appState.vets;
+  const dentists = appState.dentists;
 
   return (
-    <main className="">
-      <h1>Home</h1>
-      <div className="card-grid">
-        {vets.map((vet, index) => {
-          return <Card key={index} vet={vet}></Card>;
-        })}
+    <main className={`${appState.theme === "dark" && "bg-[#666666]"} w-full`}>
+      <div className={` min-h-screen mx-auto py-8 w-[1080px]`}>
+        <h1
+          className={`text-left text-3xl ${
+            appState.theme === "dark" && "text-white"
+          }`}
+        >
+          Our professionals
+        </h1>
+        <div className="py-4 flex gap-4 flex-wrap">
+          {dentists.map((dentist, index) => {
+            return <Card key={index} dentist={dentist}></Card>;
+          })}
+        </div>
       </div>
     </main>
   );

@@ -1,4 +1,4 @@
-import { useAppContext } from "../Context/Context";
+import { useAppContext } from "../Hooks/useAppContext";
 import Card from "../Components/Card";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
@@ -8,16 +8,22 @@ const Favs = () => {
   const favs = appState.favs;
 
   return (
-    <>
-      <h1>Dentists Favs</h1>
-      <div className="card-grid">
-        {/* este componente debe consumir los destacados del localStorage */}
-        {/* Deberan renderizar una Card por cada uno de ellos */}
-        {favs.map((vet, index) => {
-          return <Card key={index} vet={vet}></Card>;
-        })}
+    <main className={`${appState.theme === "dark" && "bg-[#666666]"} w-full`}>
+      <div className={` min-h-screen mx-auto py-8 w-[1080px]`}>
+        <h1
+          className={`text-left text-3xl ${
+            appState.theme === "dark" && "text-white"
+          }`}
+        >
+          Dentists Favs
+        </h1>
+        <div className="py-4 flex gap-4 flex-wrap">
+          {favs.map((dentist, index) => {
+            return <Card key={index} dentist={dentist}></Card>;
+          })}
+        </div>
       </div>
-    </>
+    </main>
   );
 };
 

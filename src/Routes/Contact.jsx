@@ -1,14 +1,34 @@
 import Form from "../Components/Form";
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import { useAppContext } from "../Hooks/useAppContext";
 
 const Contact = () => {
+  const { appState } = useAppContext();
+
   return (
-    <div>
-      <h2>Want to know more?</h2>
-      <p>Send us your questions and we will contact you</p>
-      <Form />
-    </div>
+    <main className={`${appState.theme === "dark" && "bg-[#666666]"} w-full`}>
+      <div
+        className={` min-h-screen mx-auto flex flex-col gap-8 py-8 w-[1080px]`}
+      >
+        <div>
+          <h1
+            className={`text-left text-3xl ${
+              appState.theme === "dark" && "text-white"
+            }`}
+          >
+            Want to know more?
+          </h1>
+          <p
+            className={`text-left  ${
+              appState.theme === "dark" && "text-white"
+            }`}
+          >
+            Send us your questions and we will contact you
+          </p>
+        </div>
+
+        <Form />
+      </div>
+    </main>
   );
 };
 
