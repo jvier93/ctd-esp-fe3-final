@@ -10,7 +10,7 @@ const Form = () => {
       type: "text",
       name: "name",
       placeholder: "Name",
-      pattern: "^[a-zA-Z ]+$",
+      pattern: "^(?=.*[a-zA-Z])(?=.*[a-zA-Z ]).{3,}$",
     },
     {
       type: "email",

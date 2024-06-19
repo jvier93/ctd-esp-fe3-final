@@ -20,7 +20,7 @@ const Navbar = () => {
     <nav className={` w-full   ${appState.theme === "dark" && "dark"}`}>
       <div className="mx-auto h-20 flex justify-between items-center max-w-[1080px]">
         <div className="flex gap-2 items-center cursor-pointer">
-          <img className="w-10" src="./images/logo.png" alt="App-logo"></img>
+          <img className="w-10" src="/images/logo.png" alt="App-logo"></img>
           <Link
             className={`hover:text-[#0177c1] ${
               appState.theme === "dark" && "dark"
@@ -50,8 +50,8 @@ const Navbar = () => {
               className="w-10"
               src={
                 appState.theme === "light"
-                  ? "./images/light.png"
-                  : "./images/dark.png"
+                  ? "/images/light.png"
+                  : "/images/dark.png"
               }
               alt=""
             />

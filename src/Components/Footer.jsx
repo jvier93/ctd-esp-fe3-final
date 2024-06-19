@@ -6,18 +6,18 @@ const Footer = () => {
   const socialLinks = [
     {
       name: "Facebook",
-      ico: "./images/ico-facebook.png",
-      icoDark: "./images/ico-facebook.png",
+      ico: "/images/ico-facebook.png",
+      icoDark: "/images/ico-facebook.png",
     },
     {
       name: "Instagram",
-      ico: "./images/ico-instagram.png",
-      icoDark: "./images/ico-instagram.png",
+      ico: "/images/ico-instagram.png",
+      icoDark: "/images/ico-instagram.png",
     },
     {
       name: "TikTok",
-      ico: "./images/ico-tiktok.png",
-      icoDark: "./images/ico-tiktok-dark.png",
+      ico: "/images/ico-tiktok.png",
+      icoDark: "/images/ico-tiktok-dark.png",
     },
   ];
 
@@ -42,11 +42,7 @@ const Footer = () => {
         </div>
         <div>
           <p className="pb-6">Contact us</p>
-          <img
-            className="w-8"
-            src={"./images/ico-whatsapp.png"}
-            alt="DH-logo"
-          />
+          <img className="w-8" src={"/images/ico-whatsapp.png"} alt="DH-logo" />
         </div>
         <div>
           <p className="pb-6">Powered by</p>
@@ -54,8 +50,8 @@ const Footer = () => {
             className="w-44"
             src={`${
               appState.theme === "light"
-                ? "./images/DH.png"
-                : "./images/DH-dark.png"
+                ? "/images/DH.png"
+                : "/images/DH-dark.png"
             }`}
             alt="DH-logo"
           />

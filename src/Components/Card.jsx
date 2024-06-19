@@ -16,7 +16,7 @@ const Card = ({ dentist }) => {
       className="w-60 flex gap-4 flex-col bg-white   border-[1px]"
     >
       <div className="flex flex-col  gap-2">
-        <img className="w-60" src="./images/doctor.jpg" alt="" />
+        <img className="w-60" src="/images/doctor.jpg" alt="" />
         <div className="flex px-2 flex-col gap-0">
           <h3>{dentist.name}</h3>
           <p className="text-gray-400 text-sm">{dentist.username}</p>
